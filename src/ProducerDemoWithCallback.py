@@ -25,7 +25,8 @@ def on_send_error(excp):
     logging.error(excp)
 
 # send data -> this is asynchronous because of this program exits and data never sent
-producer.send('third_topic', {'key': 'valo helrd'}).add_callback(on_send_success).add_errback(on_send_error)
+for i in range(10):
+    producer.send('third_topic', {'key': 'valo helrd'}).add_callback(on_send_success).add_errback(on_send_error)
 
 #flush producer
 producer.flush()
